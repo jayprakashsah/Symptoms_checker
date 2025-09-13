@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Disease Detector — HealthGuardian</title>
+
+  <!-- styles -->
+  <link rel="stylesheet" href="css/disease.css">
+
+  <!-- Teachable Machine (keeps same version you used) -->
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+
+  <!-- local script (deferred) -->
+  <script src="js/disease.js" defer></script>
+</head>
+<body>
+  <main class="dg-wrap">
+    <header class="dg-header">
+      <h1>🩺 Disease Detector</h1>
+      <p class="lead">Upload an image or use your camera. Only one clear recommendation will be shown.</p>
+    </header>
+
+    <section class="dg-controls">
+      <div class="buttons">
+        <button id="startBtn" class="btn primary">📷 Start Camera</button>
+        <button id="captureBtn" class="btn" disabled>📸 Capture</button>
+        <button id="stopBtn" class="btn danger" disabled>🛑 Stop Camera</button>
+
+        <label class="btn upload">
+          ⬆️ Upload Image
+          <input type="file" id="uploadInput" accept="image/*">
+        </label>
+      </div>
+
+      <div id="status" class="status">Status: idle</div>
+    </section>
+
+    <section class="dg-media">
+      <div class="media-left">
+        <video id="video" autoplay playsinline muted></video>
+        <canvas id="canvas" hidden></canvas>
+        <img id="previewImg" alt="uploaded preview" hidden />
+      </div>
+
+      <div class="media-right">
+        <div id="resultCard" class="result-card empty">
+          <div class="empty-state">
+            <p>No result yet</p>
+            <small>Upload or capture an image to detect</small>
+          </div>
+        </div>
+
+        <div class="more-actions">
+          <button id="retestBtn" class="btn" disabled>🔁 Retest</button>
+          <button id="locHospBtn" class="btn" disabled>📍 Find Nearby Hospitals</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="dg-footer">
+      <small>Tip: If camera doesn't start, check site permissions in your browser and make sure you're on the Live Server URL (http://localhost or 127.0.0.1).</small>
+    </footer>
+  </main>
+</body>
+</html>

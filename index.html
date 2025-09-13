@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthGuardian - Your Emergency Healthcare Companion</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/chart.css">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+   
+   <!-- Floating Chatbot -->
+    <button id="chat-toggle">💬</button>
+<div id="chatbot">
+  <div id="chat-header">💬 Health Chatbot</div>
+  <div id="chat-box"></div>
+  <div id="chat-input-container">
+      <input type="text" id="chat-input" placeholder="Type your message..." />
+      <button id="send-btn" onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heartbeat"></i> HealthGuardian
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="emergency.html">Emergency</a>
+                <a href="hospitals.html">Find Hospitals</a>
+                <a href="assistant.html">AI Assistant</a>
+                <a href="video.html">Video Conference</a>
+                <a href="bloodbank.html">Blood Banks</a>
+                <a href="disease.html" class="module-link">🩺 Disease Detector</a>
+                <a href="login.html" class="login-btn">Login</a>
+                
+                <!-- Profile dropdown -->
+                <div class="profile-dropdown" style="display: none;">
+                    <button class="profile-toggle">
+                        <img src="h.png" class="profile-img" alt="Profile">
+                        <span class="profile-name">User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item logout-btn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Emergency Healthcare When You Need It Most</h1>
+                <p>Instant access to medical help, hospital information, and emergency assistance with just one tap.</p>
+                <div class="hero-buttons">
+                    <a href="emergency.html" class="btn btn-primary">
+                        <i class="fas fa-bell"></i> Emergency SOS
+                    </a>
+                    <a href="hospitals.html" class="btn btn-secondary">
+                        <i class="fas fa-hospital"></i> Find Hospitals
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://wallpaperaccess.com/full/3275630.jpg" alt="Doctor using HealthGuardian">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">How HealthGuardian Helps You</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon emergency">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h3>Emergency Response</h3>
+                    <p>Instant connection to nearby ambulances, hospitals, and trained volunteers with one tap.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon hospital">
+                        <i class="fas fa-hospital-alt"></i>
+                    </div>
+                    <h3>Smart Hospital Search</h3>
+                    <p>Find hospitals with the shortest wait times and book appointments instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon ai">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Health Assistant</h3>
+                    <p>Get instant first-aid guidance and symptom analysis from our AI assistant.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon blood">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Blood Bank Finder</h3>
+                    <p>Locate nearby blood banks with real-time inventory updates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Quick Access -->
+    <section class="quick-access">
+        <div class="container">
+            <h2 class="section-title">Quick Access in Emergencies</h2>
+            <div class="quick-access-grid">
+                <a href="emergency.html#heart-attack" class="quick-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Heart Attack</span>
+                </a>
+                <a href="emergency.html#stroke" class="quick-card">
+                    <i class="fas fa-brain"></i>
+                    <span>Stroke</span>
+                </a>
+                <a href="emergency.html#choking" class="quick-card">
+                    <i class="fas fa-lungs"></i>
+                    <span>Choking</span>
+                </a>
+                <a href="emergency.html#bleeding" class="quick-card">
+                    <i class="fas fa-tint"></i>
+                    <span>Severe Bleeding</span>
+                </a>
+                <a href="emergency.html#burn" class="quick-card">
+                    <i class="fas fa-fire"></i>
+                    <span>Burns</span>
+                </a>
+                <a href="emergency.html#allergy" class="quick-card">
+                    <i class="fas fa-allergies"></i>
+                    <span>Allergic Reaction</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Lives Saved With HealthGuardian</h2>
+            <div class="testimonial-slider">
+                <!-- Add your testimonial items here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

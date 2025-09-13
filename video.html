@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Conference - HealthGuardian</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/video.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heartbeat"></i> HealthGuardian
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="emergency.html">Emergency</a>
+                <a href="hospitals.html">Find Hospitals</a>
+                <a href="assistant.html">AI Assistant</a>
+                <a href="video.html" class="active">Video Conference</a>
+                <a href="bloodbank.html">Blood Banks</a>
+            </div>
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Video Conference Section -->
+    <section class="video-conference" style="display: none;">
+        <div class="container">
+        
+            <p class="subtitle">Connect with healthcare professionals through encrypted video calls</p>
+            
+            <div class="conference-container">
+                <div class="video-container">
+                    <div class="video-controls">
+                        <button id="toggle-video" class="btn-control" title="Toggle Video">
+                            <i class="fas fa-video"></i>
+                        </button>
+                        <button id="toggle-mic" class="btn-control" title="Toggle Microphone">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button id="toggle-screen" class="btn-control" title="Share Screen">
+                            <i class="fas fa-desktop"></i>
+                        </button>
+                        <button id="end-call" class="btn-control btn-end" title="End Call">
+                            <i class="fas fa-phone-slash"></i>
+                        </button>
+                        <button id="toggle-chat" class="btn-control" title="Toggle Chat">
+                            <i class="fas fa-comment-dots"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="video-grid">
+                        <div class="video-box local-video">
+                            <video id="local-video" autoplay muted playsinline></video>
+                            <div class="video-label">You</div>
+                        </div>
+                        <div class="video-box remote-video">
+                            <img id="doctor-image" src="https://img.freepik.com/free-photo/doctor-with-his-arms-crossed-white-background_1368-5790.jpg" alt="Doctor">
+                            <video id="remote-video" autoplay playsinline style="display: none;"></video>
+                            <div class="video-label">Dr. Smith</div>
+                            <div class="connection-status">
+                                <span class="status-dot"></span>
+                                <span class="status-text">Connecting...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar" id="sidebar">
+                    <div class="sidebar-header">
+                        <h3>Participants</h3>
+                        <button class="btn-close-sidebar" id="close-sidebar">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="participants-list">
+                        <div class="participant">
+                            <div class="participant-avatar">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="participant-info">
+                                <span class="participant-name">Dr. Smith</span>
+                                <span class="participant-role">Cardiologist</span>
+                            </div>
+                            <div class="participant-status">
+                                <i class="fas fa-microphone"></i>
+                                <i class="fas fa-video"></i>
+                            </div>
+                        </div>
+                        <div class="participant">
+                            <div class="participant-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="participant-info">
+                                <span class="participant-name">You</span>
+                                <span class="participant-role">Patient</span>
+                            </div>
+                            <div class="participant-status">
+                                <i class="fas fa-microphone-slash"></i>
+                                <i class="fas fa-video-slash"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chat-messages">
+                            <!-- Messages will be added dynamically -->
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="chat-input" placeholder="Type your message...">
+                            <button id="send-message">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="meeting-controls">
+                <div class="meeting-info">
+                    <div class="meeting-id">
+                        <span>Meeting ID:</span>
+                        <strong id="meeting-id">HG-5X7T-9K2M</strong>
+                        <button class="btn-copy" id="copy-meeting-id">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <div class="meeting-timer">
+                        <i class="fas fa-clock"></i>
+                        <span id="meeting-timer">00:00:00</span>
+                    </div>
+                </div>
+                <div class="meeting-actions">
+                    <button class="btn-invite">
+                        <i class="fas fa-user-plus"></i> Invite Participants
+                    </button>
+                    <button class="btn-record">
+                        <i class="fas fa-circle"></i> Record Session
+                    </button>
+                    <button class="btn-prescription">
+                        <i class="fas fa-file-prescription"></i> Generate Prescription
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pre-Call Setup Section -->
+    <section class="pre-call" id="pre-call">
+        <div class="container">
+            <div class="pre-call-card">
+                <h2>Start or Join a Medical Consultation</h2>
+                <div class="pre-call-options">
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>New Consultation</h3>
+                        <p>Start a new video consultation with a healthcare professional</p>
+                        <button class="btn-start" id="start-consultation">
+                            Start Now
+                        </button>
+                    </div>
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3>Join Consultation</h3>
+                        <p>Join an existing consultation with your meeting ID</p>
+                        <div class="join-form">
+                            <input type="text" id="meeting-code" placeholder="Enter Meeting ID">
+                            <button class="btn-join" id="join-consultation">
+                                Join
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="device-check">
+                    <h3>Device Check</h3>
+                    <div class="device-options">
+                        <div class="device-option">
+                            <label for="camera-select">Camera</label>
+                            <select id="camera-select">
+                                <option value="">Select Camera</option>
+                            </select>
+                            <div class="device-preview">
+                                <video id="camera-preview" autoplay muted playsinline></video>
+                            </div>
+                        </div>
+                        <div class="device-option">
+                            <label for="mic-select">Microphone</label>
+                            <select id="mic-select">
+                                <option value="">Select Microphone</option>
+                            </select>
+                            <div class="device-preview">
+                                <div class="audio-visualizer" id="audio-visualizer">
+                                    <div class="audio-bar"></div>
+                                    <div class="audio-bar"></div>
+                                    <div class="audio-bar"></div>
+                                    <div class="audio-bar"></div>
+                                    <div class="audio-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="device-option">
+                            <label for="speaker-select">Speaker</label>
+                            <select id="speaker-select">
+                                <option value="">Select Speaker</option>
+                            </select>
+                            <div class="device-preview">
+                                <button class="btn-test-speaker" id="test-speaker">
+                                    <i class="fas fa-volume-up"></i> Test Speaker
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-heartbeat"></i> HealthGuardian
+                    </a>
+                    <p>Your trusted emergency healthcare companion, connecting you with medical help when seconds matter.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="emergency.html">Emergency SOS</a></li>
+                        <li><a href="hospitals.html">Find Hospitals</a></li>
+                        <li><a href="assistant.html">AI Assistant</a></li>
+                        <li><a href="video-conference.html">Video Conference</a></li>
+                        <li><a href="bloodbank.html">Blood Banks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> Emergency:+9779829275143</li>
+                        <li><i class="fas fa-headset"></i> Support: 1-800-HELP</li>
+                        <li><i class="fas fa-envelope"></i> help@healthguardian.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 HealthGuardian. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+    <script src="js/video.js"></script>
+</body>
+</html>

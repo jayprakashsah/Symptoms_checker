@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Health Assistant | HealthGuardian</title>
+    <link rel="stylesheet" href="css\styles.css">
+    <link rel="stylesheet" href="css\assistant.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heartbeat"></i> HealthGuardian
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="emergency.html">Emergency</a>
+                <a href="hospitals.html">Find Hospitals</a>
+                <a href="assistant.html" class="active">AI Assistant</a>
+                <a href="video.html">video conference</a>
+                <a href="bloodbank.html">Blood Banks</a>
+            </div>
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- AI Assistant Hero -->
+    <section class="assistant-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>AI Health Assistant</h1>
+                <p>Get instant medical guidance, symptom analysis, and first-aid instructions from our AI-powered assistant.</p>
+                <div class="hero-buttons">
+                    <a href="#symptom-checker" class="btn btn-primary">
+                        <i class="fas fa-stethoscope"></i> Symptom Checker
+                    </a>
+                    <a href="#first-aid" class="btn btn-secondary">
+                        <i class="fas fa-first-aid"></i> First Aid Guides
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://esoftskills.com/healthcare/wp-content/uploads/2024/04/AI-in-Healthcare-Cybersecurity-Protecting-Sensitive-Data-1024x585.jpg" alt="AI Health Assistant">
+            </div>
+        </div>
+    </section>
+
+    <!-- Symptom Checker Section -->
+    <section class="symptom-checker" id="symptom-checker">
+        <div class="container">
+            <h2 class="section-title">Symptom Checker</h2>
+            <p class="section-subtitle">Describe your symptoms and get potential causes and recommendations</p>
+            
+            <div class="checker-container">
+                <div class="input-methods">
+                    <div class="method-tabs">
+                        <button class="method-tab active" data-method="text">
+                            <i class="fas fa-keyboard"></i> Text Input
+                        </button>
+                        <button class="method-tab" data-method="voice">
+                            <i class="fas fa-microphone"></i> Voice Input
+                        </button>
+                        <button class="method-tab" data-method="visual">
+                            <i class="fas fa-camera"></i> Visual Check
+                        </button>
+                    </div>
+                    
+                    <div class="method-content">
+                        <!-- Text Input -->
+                        <div class="method-pane active" id="text-input">
+                            <textarea id="symptomText" placeholder="Describe your symptoms (e.g., 'I have had a headache and fever for 2 days')"></textarea>
+                            <div class="symptom-tags" id="symptomTags">
+                                <span class="tag">Headache</span>
+                                <span class="tag">Fever</span>
+                                <span class="tag">Cough</span>
+                                <span class="tag">Nausea</span>
+                                <span class="tag">Dizziness</span>
+                            </div>
+                            <button id="analyzeSymptoms" class="btn btn-primary">
+                                <i class="fas fa-robot"></i> Analyze Symptoms
+                            </button>
+                        </div>
+                        
+                        <!-- Voice Input -->
+                        <div class="method-pane" id="voice-input">
+                            <div class="voice-recording">
+                                <button id="startRecording" class="btn btn-primary">
+                                    <i class="fas fa-microphone"></i> Start Recording
+                                </button>
+                                <div class="voice-status">
+                                    <i class="fas fa-circle recording-indicator"></i>
+                                    <span>00:00</span>
+                                </div>
+                            </div>
+                            <div class="voice-transcript" id="voiceTranscript">
+                                <p>Your recorded symptoms will appear here...</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Visual Input -->
+                        <div class="method-pane" id="visual-input">
+                            <div class="visual-upload">
+                                <div class="upload-area" id="uploadArea">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Upload an image of your condition</p>
+                                    <span>or drag & drop image here</span>
+                                    <input type="file" id="imageUpload" accept="image/*">
+                                </div>
+                                <div class="image-preview" id="imagePreview">
+                                    <img id="previewImage" style="display: none;">
+                                    <button id="removeImage" class="btn btn-secondary">
+                                        <i class="fas fa-trash"></i> Remove
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="visual-options">
+                                <h4>Common visual checks:</h4>
+                                <div class="visual-buttons">
+                                    <button class="visual-option" data-type="rash">
+                                        <i class="fas fa-allergies"></i> Skin Rash
+                                    </button>
+                                    <button class="visual-option" data-type="wound">
+                                        <i class="fas fa-cut"></i> Wound
+                                    </button>
+                                    <button class="visual-option" data-type="eye">
+                                        <i class="fas fa-eye"></i> Eye Condition
+                                    </button>
+                                </div>
+                            </div>
+                            <button id="analyzeImage" class="btn btn-primary" disabled>
+                                <i class="fas fa-search"></i> Analyze Image
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="results-container" id="resultsContainer">
+                    <div class="welcome-message">
+                        <div class="ai-avatar">
+                            <img src="https://img.freepik.com/premium-photo/advanced-technology-hospital-operating-room-patient-monitoring_1111209-16210.jpg" alt="AI Assistant">
+                        </div>
+                        <div class="welcome-content">
+                            <h3>Hello! I'm your HealthGuardian AI</h3>
+                            <p>Describe your symptoms using text, voice, or images, and I'll provide medical information and recommendations.</p>
+                            <p><strong>Note:</strong> This is not a substitute for professional medical advice.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- First Aid Guides Section -->
+    <section class="first-aid" id="first-aid">
+        <div class="container">
+            <h2 class="section-title">First Aid Guides</h2>
+            <p class="section-subtitle">Step-by-step instructions for common emergencies</p>
+            
+            <div class="first-aid-grid">
+                <!-- CPR Guide -->
+                <div class="aid-card">
+                    <div class="aid-image">
+                        <img src="https://hand2heartcpr.ca/wp-content/uploads/2018/01/AdobeStock_182735346.jpeg" alt="CPR Instructions">
+                        <div class="aid-badge">
+                            <i class="fas fa-heartbeat"></i> Life-Saving
+                        </div>
+                    </div>
+                    <div class="aid-content">
+                        <h3>CPR (Cardiopulmonary Resuscitation)</h3>
+                        <div class="aid-steps">
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                <p>Check responsiveness and call for help</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <p>Place heel of hand on center of chest</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <p>Push hard and fast (100-120 compressions/min)</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary view-guide" data-guide="cpr">
+                            <i class="fas fa-book-open"></i> View Full Guide
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Choking Guide -->
+                <div class="aid-card">
+                    <div class="aid-image">
+                        <img src="https://media.istockphoto.com/id/2204399480/nl/foto/woman-performing-heimlich-maneuver-on-choking-partner-during-urgent-health-crisis-in-home.jpg?s=612x612&w=0&k=20&c=FwWISGh20p8D-whjJXy2Q0My9B53zinLy3RvQllsHaA=" alt="Choking Instructions">
+                    </div>
+                    <div class="aid-content">
+                        <h3>Choking - Heimlich Maneuver</h3>
+                        <div class="aid-steps">
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                <p>Ask "Are you choking?" - if they can't speak, act</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <p>Stand behind, wrap arms around waist</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <p>Give quick upward abdominal thrusts</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary view-guide" data-guide="choking">
+                            <i class="fas fa-book-open"></i> View Full Guide
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Burn Guide -->
+                <div class="aid-card">
+                    <div class="aid-image">
+                        <img src="https://media.istockphoto.com/id/157602937/nl/foto/doctor-nurse-treating-mans-wound-burn-emergency-room-hospital.jpg?s=612x612&w=0&k=20&c=Lls_MF4XRp-GFUC1O2oXzkaopKZk47_YuTNvd8_7tJE=" alt="Burn Treatment">
+                    </div>
+                    <div class="aid-content">
+                        <h3>Burn Treatment</h3>
+                        <div class="aid-steps">
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                <p>Cool burn with running water (10-15 min)</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <p>Remove tight items before swelling</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <p>Cover with sterile non-stick dressing</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary view-guide" data-guide="burns">
+                            <i class="fas fa-book-open"></i> View Full Guide
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- More guides would be listed here -->
+            </div>
+            
+            <div class="view-all">
+                <a href="#" class="btn btn-secondary">
+                    <i class="fas fa-list-ul"></i> View All First Aid Guides
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Conditions Section -->
+    <section class="common-conditions">
+        <div class="container">
+            <h2 class="section-title">Common Conditions</h2>
+            <p class="section-subtitle">Quick information about frequent health issues</p>
+            
+            <div class="conditions-tabs">
+                <button class="condition-tab active" data-condition="all">All</button>
+                <button class="condition-tab" data-condition="respiratory">Respiratory</button>
+                <button class="condition-tab" data-condition="digestive">Digestive</button>
+                <button class="condition-tab" data-condition="neurological">Neurological</button>
+                <button class="condition-tab" data-condition="skin">Skin</button>
+            </div>
+            
+            <div class="conditions-grid">
+                <!-- Condition cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-heartbeat"></i> HealthGuardian
+                    </a>
+                    <p>Your trusted emergency healthcare companion, connecting you with medical help when seconds matter.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="emergency.html">Emergency SOS</a></li>
+                        <li><a href="hospitals.html">Find Hospitals</a></li>
+                        <li><a href="assistant.html">AI Assistant</a></li>
+                        <li><a href="bloodbank.html">Blood Banks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Emergency Contacts</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> Emergency:+9779829275143</li>
+                        <li><i class="fas fa-headset"></i> Support: 1-800-HELP</li>
+                        <li><i class="fas fa-envelope"></i> help@healthguardian.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HealthGuardian. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Guide Modal -->
+    <div class="modal" id="guideModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Guide content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js\main.js"></script>
+    <script src="js\assistant.js"></script>
+</body>
+</html>

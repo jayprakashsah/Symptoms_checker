@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Hospitals - HealthGuardian</title>
+    <link rel="stylesheet" href="css\styles.css">
+    <link rel="stylesheet" href="css\hospitals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heartbeat"></i> HealthGuardian
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="emergency.html">Emergency</a>
+                <a href="hospitals.html" class="active">Find Hospitals</a>
+                <a href="assistant.html">AI Assistant</a>
+                <a href="video.html">video conference</a>
+                <a href="bloodbank.html">Blood Banks</a>
+            </div>
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hospital Finder Section -->
+    <section class="hospital-finder">
+        <div class="container">
+            <h1>Find Nearby Hospitals</h1>
+            <p class="subtitle">Locate the best medical facilities near you with real-time availability</p>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" id="location-input" placeholder="Enter your location or use current location">
+                    <button id="current-location-btn"><i class="fas fa-location-arrow"></i></button>
+                </div>
+                <div class="filter-options">
+                    <select id="specialty-filter">
+                        <option value="">All Specialties</option>
+                        <option value="emergency">Emergency</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="pediatrics">Pediatrics</option>
+                        <option value="orthopedics">Orthopedics</option>
+                        <option value="neurology">Neurology</option>
+                    </select>
+                    <select id="distance-filter">
+                        <option value="5">Within 5 km</option>
+                        <option value="10" selected>Within 10 km</option>
+                        <option value="20">Within 20 km</option>
+                        <option value="50">Within 50 km</option>
+                    </select>
+                    <button id="search-btn" class="btn-primary">Search</button>
+                </div>
+            </div>
+            
+            <div class="results-container">
+                <div class="map-container">
+                    <div id="hospital-map"></div>
+                </div>
+                <div class="hospital-list">
+                    <div class="sort-options">
+                        <span>Sort by:</span>
+                        <button class="sort-btn active" data-sort="distance">Distance</button>
+                        <button class="sort-btn" data-sort="wait-time">Wait Time</button>
+                        <button class="sort-btn" data-sort="rating">Rating</button>
+                    </div>
+                    
+                    <div class="hospital-list-items" id="hospital-list">
+                        <!-- Hospital items will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contact Section -->
+    <section class="emergency-contact">
+        <div class="container">
+            <div class="emergency-card">
+                <div class="emergency-icon">
+                    <i class="fas fa-ambulance"></i>
+                </div>
+                <div class="emergency-content">
+                    <h3>Need Immediate Help?</h3>
+                    <p>If this is a life-threatening emergency, please call your local emergency number immediately.</p>
+                    <div class="emergency-buttons">
+                        <a href="tel:911" class="btn-emergency">
+                            <i class="fas fa-phone"></i> Call 911 (US)
+                        </a>
+                        <a href="emergency.html" class="btn-secondary">
+                            <i class="fas fa-bell"></i> Emergency SOS
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-heartbeat"></i> HealthGuardian
+                    </a>
+                    <p>Your trusted emergency healthcare companion, connecting you with medical help when seconds matter.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="emergency.html">Emergency SOS</a></li>
+                        <li><a href="hospitals.html">Find Hospitals</a></li>
+                        <li><a href="assistant.html">AI Assistant</a></li>
+                        <li><a href="video conference">video conference</a></li>
+                        <li><a href="bloodbank.html">Blood Banks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> Emergency:+9779829275143</li>
+                        <li><i class="fas fa-headset"></i> Support: 1-800-HELP</li>
+                        <li><i class="fas fa-envelope"></i> help@healthguardian.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HealthGuardian. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="js\main.js"></script>
+    <script src="js\hospitals.js"></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Finder - HealthGuardian</title>
+    <link rel="stylesheet" href="css\styles.css">
+    <link rel="stylesheet" href="css\blood.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heartbeat"></i> HealthGuardian
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="emergency.html">Emergency</a>
+                <a href="hospitals.html">Find Hospitals</a>
+                <a href="assistant.html">AI Assistant</a>
+                <a href="video.html">video conference</a>
+                <a href="bloodbank.html" class="active">Blood Banks</a>
+            </div>
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Blood Bank Finder Section -->
+    <section class="bloodbank-finder">
+        <div class="container">
+            <h1>Find Blood Banks & Donation Centers</h1>
+            <p class="subtitle">Locate nearby blood banks and check real-time blood availability</p>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" id="location-input" placeholder="Enter your location or use current location">
+                    <button id="current-location-btn"><i class="fas fa-location-arrow"></i></button>
+                </div>
+                <div class="filter-options">
+                    <select id="blood-type-filter">
+                        <option value="">All Blood Types</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                    <select id="distance-filter">
+                        <option value="5">Within 5 km</option>
+                        <option value="10" selected>Within 10 km</option>
+                        <option value="20">Within 20 km</option>
+                        <option value="50">Within 50 km</option>
+                    </select>
+                    <button id="search-btn" class="btn-primary">Search</button>
+                </div>
+            </div>
+            
+            <div class="blood-availability">
+                <h3>Blood Availability Status</h3>
+                <div class="blood-types-grid">
+                    <div class="blood-type-card" data-type="A+">
+                        <div class="blood-type">A+</div>
+                        <div class="availability available">Available</div>
+                    </div>
+                    <div class="blood-type-card" data-type="A-">
+                        <div class="blood-type">A-</div>
+                        <div class="availability limited">Limited</div>
+                    </div>
+                    <div class="blood-type-card" data-type="B+">
+                        <div class="blood-type">B+</div>
+                        <div class="availability available">Available</div>
+                    </div>
+                    <div class="blood-type-card" data-type="B-">
+                        <div class="blood-type">B-</div>
+                        <div class="availability critical">Critical</div>
+                    </div>
+                    <div class="blood-type-card" data-type="AB+">
+                        <div class="blood-type">AB+</div>
+                        <div class="availability available">Available</div>
+                    </div>
+                    <div class="blood-type-card" data-type="AB-">
+                        <div class="blood-type">AB-</div>
+                        <div class="availability limited">Limited</div>
+                    </div>
+                    <div class="blood-type-card" data-type="O+">
+                        <div class="blood-type">O+</div>
+                        <div class="availability critical">Critical</div>
+                    </div>
+                    <div class="blood-type-card" data-type="O-">
+                        <div class="blood-type">O-</div>
+                        <div class="availability limited">Limited</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="results-container">
+                <div class="map-container">
+                    <div id="bloodbank-map"></div>
+                </div>
+                <div class="bloodbank-list">
+                    <div class="sort-options">
+                        <span>Sort by:</span>
+                        <button class="sort-btn active" data-sort="distance">Distance</button>
+                        <button class="sort-btn" data-sort="availability">Availability</button>
+                        <button class="sort-btn" data-sort="rating">Rating</button>
+                    </div>
+                    
+                    <div class="bloodbank-list-items" id="bloodbank-list">
+                        <!-- Blood bank items will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blood Donation Section -->
+    <section class="blood-donation">
+        <div class="container">
+            <div class="donation-card">
+                <div class="donation-image">
+                    <img src="https://images.unsplash.com/photo-1615461066159-fea0960485d5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Ymxvb2QlMjBkb25hdGlvbnxlbnwwfHwwfHx8MA%3D%3D" alt="Blood donation">
+                </div>
+                <div class="donation-content">
+                    <h2>Become a Blood Donor</h2>
+                    <p>Your blood donation can save up to 3 lives. Register as a blood donor and help those in need.</p>
+                    <div class="donation-buttons">
+                        <a href="#" class="btn-donate">
+                            <i class="fas fa-hand-holding-heart"></i> Register as Donor
+                        </a>
+                        <a href="#" class="btn-secondary">
+                            <i class="fas fa-question-circle"></i> Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contact Section -->
+    <section class="emergency-contact">
+        <div class="container">
+            <div class="emergency-card">
+                <div class="emergency-icon">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <div class="emergency-content">
+                    <h3>Need Blood Urgently?</h3>
+                    <p>If you need blood immediately for a patient, contact these emergency blood banks.</p>
+                    <div class="emergency-buttons">
+                        <a href="tel:104" class="btn-emergency">
+                            <i class="fas fa-phone"></i> Call Blood Helpline (104)
+                        </a>
+                        <a href="emergency.html" class="btn-secondary">
+                            <i class="fas fa-ambulance"></i> Emergency Services
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-heartbeat"></i> HealthGuardian
+                    </a>
+                    <p>Your trusted emergency healthcare companion, connecting you with medical help when seconds matter.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="emergency.html">Emergency SOS</a></li>
+                        <li><a href="hospitals.html">Find Hospitals</a></li>
+                        <li><a href="assistant.html">AI Assistant</a></li>
+                        <li><a href="video conference">video conference</a></li>
+                        <li><a href="bloodbank.html">Blood Banks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> Emergency:+9779829275143</li>
+                        <li><i class="fas fa-headset"></i> Support: 1-800-HELP</li>
+                        <li><i class="fas fa-envelope"></i> help@healthguardian.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 HealthGuardian. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="js\main.js"></script>
+    <script src="js\blood.js"></script>
+</body>
+</html>

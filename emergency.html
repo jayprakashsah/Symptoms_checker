@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Assistance | HealthGuardian</title>
+    <link rel="stylesheet" href="css\styles.css">
+    <link rel="stylesheet" href="css\emergency.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heartbeat"></i> HealthGuardian
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="emergency.html" class="active">Emergency</a>
+                <a href="hospitals.html">Find Hospitals</a>
+                <a href="assistant.html">AI Assistant</a>
+                <a href="video.html">video conference</a>
+                <a href="bloodbank.html">Blood Banks</a>
+            </div>
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Emergency SOS Section -->
+    <section class="emergency-sos">
+        <div class="container">
+            <div class="sos-container">
+                <h1 class="sos-title">Emergency SOS</h1>
+                <p class="sos-subtitle">Press the button below in case of emergency</p>
+                
+                <div class="sos-button-container">
+                    <button id="sosButton" class="sos-button">
+                        <div class="sos-button-inner">
+                            <i class="fas fa-bell"></i>
+                            <span>EMERGENCY</span>
+                        </div>
+                        <div class="sos-pulse"></div>
+                    </button>
+                </div>
+                
+                <div class="sos-instructions">
+                    <div class="instruction-card">
+                        <i class="fas fa-info-circle"></i>
+                        <p>When activated, we will alert nearby emergency services and volunteers</p>
+                    </div>
+                    <div class="instruction-card">
+                        <i class="fas fa-location-arrow"></i>
+                        <p>Your location will be shared with responders</p>
+                    </div>
+                </div>
+                
+                <div id="sosStatus" class="sos-status">
+                    <div class="status-content">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Ready to send emergency alert</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="emergency-contacts">
+                <h2>Emergency Contacts</h2>
+                <div class="contacts-grid">
+                    <a href="tel:+916385397558" class="contact-card police">
+                        <i class="fas fa-police-box"></i>
+                        <span>Police</span>
+                        <small>+916385397558</small>
+                    </a>
+                    <a href="tel:911" class="contact-card ambulance">
+                        <i class="fas fa-ambulance"></i>
+                        <span>Ambulance</span>
+                        <small>102</small>
+                    </a>
+                    <a href="tel:911" class="contact-card fire">
+                        <i class="fas fa-fire-extinguisher"></i>
+                        <span>Fire Department</span>
+                        <small>911</small>
+                    </a>
+                    <a href="tel:112" class="contact-card poison">
+                        <i class="fas fa-biohazard"></i>
+                        <span>Poison Control</span>
+                        <small>1-800-222-1222</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Guides Section -->
+    <section class="emergency-guides">
+        <div class="container">
+            <h2 class="section-title">Emergency Guides</h2>
+            <p class="section-subtitle">Step-by-step instructions for common emergencies</p>
+            
+            <div class="guides-accordion">
+                <!-- Heart Attack Guide -->
+                <div class="accordion-item active" id="heart-attack">
+                    <div class="accordion-header">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Heart Attack</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="guide-steps">
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                <p>Call emergency services immediately</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <p>Have the person sit down and rest</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <p>If prescribed, help them take nitroglycerin</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                <p>Give aspirin if not allergic (chew 325mg)</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">5</span>
+                                <p>Begin CPR if person becomes unresponsive</p>
+                            </div>
+                        </div>
+                        <div class="guide-image">
+                            <img src="https://www.shutterstock.com/image-photo/heart-attack-man-clutching-his-260nw-2152528919.jpg" alt="Heart Attack First Aid">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Choking Guide -->
+                <div class="accordion-item" id="choking">
+                    <div class="accordion-header">
+                        <i class="fas fa-lungs"></i>
+                        <h3>Choking</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="guide-steps">
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                <p>Ask "Are you choking?" - if they can't speak, act</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <p>Stand behind them, wrap arms around waist</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <p>Make a fist, place thumb-side above navel</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                <p>Grasp fist with other hand, give quick upward thrusts</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">5</span>
+                                <p>Continue until object is expelled or person becomes unresponsive</p>
+                            </div>
+                        </div>
+                        <div class="guide-image">
+                            <img src="https://media.istockphoto.com/id/1395004596/photo/stressed-woman-having-problems-to-breath-in-a-park.jpg?s=612x612&w=0&k=20&c=N6C2MyWjTV8ZnAkrkz66B61T_cAv4vkr5yePyCdYMqk=" alt="Choking First Aid">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stroke Guide -->
+                <div class="accordion-item" id="stroke">
+                    <div class="accordion-header">
+                        <i class="fas fa-brain"></i>
+                        <h3>Stroke (FAST)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="guide-steps">
+                            <div class="step">
+                                <span class="step-fast">F</span>
+                                <p><strong>Face</strong> - Ask to smile. Does one side droop?</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-fast">A</span>
+                                <p><strong>Arms</strong> - Ask to raise both arms. Does one drift down?</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-fast">S</span>
+                                <p><strong>Speech</strong> - Ask to repeat a simple phrase. Is speech slurred?</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-fast">T</span>
+                                <p><strong>Time</strong> - If any symptoms, call 911 immediately</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">!</span>
+                                <p>Note the time symptoms first appeared</p>
+                            </div>
+                        </div>
+                        <div class="guide-image">
+                            <img src="https://thumbs.dreamstime.com/b/breathless-woman-sidewalk-21173498.jpg?w=768" alt="Stroke First Aid">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Severe Bleeding Guide -->
+                <div class="accordion-item" id="bleeding">
+                    <div class="accordion-header">
+                        <i class="fas fa-tint"></i>
+                        <h3>Severe Bleeding</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="guide-steps">
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                <p>Call emergency services immediately</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <p>Remove clothing to see wound</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <p>Apply direct pressure with clean cloth</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                <p>If blood soaks through, add more cloth (don't remove)</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">5</span>
+                                <p>Elevate injured area above heart if possible</p>
+                            </div>
+                        </div>
+                        <div class="guide-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP4SULT9Xol2-UL3W2NdmKpratbZRNj4vXSA&s" alt="Bleeding First Aid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nearby Help Section -->
+    <section class="nearby-help">
+        <div class="container">
+            <h2 class="section-title">Find Nearby Help</h2>
+            <div class="help-options">
+                <div class="help-card">
+                    <i class="fas fa-hospital"></i>
+                    <h3>Nearest Hospitals</h3>
+                    <p>Find hospitals with the shortest wait times</p>
+                    <a href="hospitals.html" class="btn btn-secondary">Find Now</a>
+                </div>
+                <div class="help-card">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Nearby Doctors</h3>
+                    <p>Connect with available medical professionals</p>
+                    <a href="hospitals.html#doctors" class="btn btn-secondary">Find Now</a>
+                </div>
+                <div class="help-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Trained Volunteers</h3>
+                    <p>Locate CPR-trained volunteers in your area</p>
+                    <a href="#" class="btn btn-secondary">Find Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-heartbeat"></i> HealthGuardian
+                    </a>
+                    <p>Your trusted emergency healthcare companion, connecting you with medical help when seconds matter.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="emergency.html">Emergency SOS</a></li>
+                        <li><a href="hospitals.html">Find Hospitals</a></li>
+                        <li><a href="assistant.html">AI Assistant</a></li>
+                        <li><a href="bloodbank.html">Blood Banks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Emergency Contacts</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> Emergency: +9779829275143</li>
+                        <li><i class="fas fa-headset"></i> Support: 1-800-HELP</li>
+                        <li><i class="fas fa-envelope"></i> help@healthguardian.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HealthGuardian. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js\main.js"></script>
+    <script src="js\emergency.js"></script>
+</body>
+</html>
